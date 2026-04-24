@@ -413,7 +413,7 @@ export default function App() {
     {
       id: 1,
       label: "Pro Tip from Product Design:",
-      content: "Add **\\\"Find your starter kit\\\"** or **\\\"Search by rank/goal\\\"** as **pinned autocomplete suggestions** — turns search into a **recruitment + sales funnel**."
+      content: "Add quick notes to give importance from research."
     }
   ]);
 
