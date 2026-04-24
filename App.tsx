@@ -1564,7 +1564,7 @@ export default function App() {
         {/* Footer */}
         <div className="mt-12 text-xs text-[#95a5a6] text-center">
           <div className="w-full text-center">
-            Plexus UX Research Team | For internal use & distribution
+            UX Research Team | For internal use & distribution
           </div>
           <br />
           <em>
