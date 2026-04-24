@@ -11,7 +11,7 @@ import { Textarea_4 } from "./components/textarea_4";
 import { Textarea_5 } from "./components/textarea_5";
 import { Textarea_6 } from "./components/textarea_6";
 import { Plus, Minus, Pencil, ChevronLeft, ChevronRight, Save, Share2, GripVertical, RotateCcw } from "lucide-react";
-import { toast } from "sonner@2.0.3";
+import { toast } from "sonner";
 import { Toaster } from "./components/ui/sonner";
 import pako from "pako";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
