@@ -17,7 +17,7 @@ export function AutoResizeInput({ value, className, minWidth = 50, bold = false,
   const [showMenu, setShowMenu] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [currentFontSize, setCurrentFontSize] = useState<string | null>(null);
-  const hideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const hideTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const adjustSize = () => {
     if (enableFormatting && editorRef.current) {
