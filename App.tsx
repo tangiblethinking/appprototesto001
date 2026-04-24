@@ -521,7 +521,7 @@ export default function App() {
   const [proTips, setProTips] = useState([
     {
       id: 1,
-      label: "Pro Tip for MLM & Subscription Brands:",
+      label: "Pro Tip from Product Design:",
       content: "Add **\"Find your starter kit\"** or **\"Search by rank/goal\"** as **pinned autocomplete suggestions** — turns search into a **recruitment + sales funnel**."
     }
   ]);
