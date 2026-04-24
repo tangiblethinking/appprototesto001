@@ -80,231 +80,49 @@
   --sidebar-ring: oklch(0.439 0 0);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-input-background: var(--input-background);
-  --color-switch-background: var(--switch-background);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-}
-
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    border-color: var(--border);
+    outline-color: color-mix(in oklch, var(--ring) 50%, transparent);
   }
 
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--background);
+    color: var(--foreground);
   }
 }
 
-/**
- * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
- */
 @layer base {
-  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
-    h1 {
-      font-size: var(--text-2xl);
-      font-weight: var(--font-weight-medium);
-      line-height: 1.5;
-    }
-
-    h2 {
-      font-size: var(--text-xl);
-      font-weight: var(--font-weight-medium);
-      line-height: 1.5;
-    }
-
-    h3 {
-      font-size: var(--text-lg);
-      font-weight: var(--font-weight-medium);
-      line-height: 1.5;
-    }
-
-    h4 {
-      font-size: var(--text-base);
-      font-weight: var(--font-weight-medium);
-      line-height: 1.5;
-    }
-
-    p {
-      font-size: var(--text-base);
-      font-weight: var(--font-weight-normal);
-      line-height: 1.5;
-    }
-
-    label {
-      font-size: var(--text-base);
-      font-weight: var(--font-weight-medium);
-      line-height: 1.5;
-    }
-
-    button {
-      font-size: var(--text-base);
-      font-weight: var(--font-weight-medium);
-      line-height: 1.5;
-    }
-
-    input {
-      font-size: var(--text-base);
-      font-weight: var(--font-weight-normal);
-      line-height: 1.5;
-    }
-  }
+  h1 { font-size: 1.5rem; font-weight: var(--font-weight-medium); line-height: 1.5; }
+  h2 { font-size: 1.25rem; font-weight: var(--font-weight-medium); line-height: 1.5; }
+  h3 { font-size: 1.125rem; font-weight: var(--font-weight-medium); line-height: 1.5; }
+  h4 { font-size: 1rem; font-weight: var(--font-weight-medium); line-height: 1.5; }
+  p  { font-size: 1rem; font-weight: var(--font-weight-normal); line-height: 1.5; }
+  label  { font-size: 1rem; font-weight: var(--font-weight-medium); line-height: 1.5; }
+  button { font-size: 1rem; font-weight: var(--font-weight-medium); line-height: 1.5; }
+  input  { font-size: 1rem; font-weight: var(--font-weight-normal); line-height: 1.5; }
 }
 
 html {
   font-size: var(--font-size);
 }
 
-/* Print Styles for PDF */
 @media print {
-  /* Hide FAB buttons and image modal when printing */
   .fixed.bottom-8.right-8,
-  .fixed.inset-0.bg-black {
-    display: none !important;
-  }
-  
-  /* Make sticky Contents section static for printing */
-  .sticky.top-0 {
-    position: static !important;
-  }
-  
-  /* Show View Online link only in print */
-  .print-only {
-    display: block !important;
-  }
-  
-  /* Page setup */
-  @page {
-    margin: 1cm;
-    size: A4;
-  }
-  
-  /* Avoid breaking elements across pages */
-  section, .bg-\\[\\#fef9e7\\], table {
-    page-break-inside: avoid;
-  }
-  
-  /* Ensure links are still clickable in PDF */
-  a {
-    text-decoration: underline;
-    color: #3498db !important;
-  }
-  
-  /* Ensure images maintain aspect ratio */
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  /* TASK 2: Hide all control buttons and labels */
-  /* Hide +/- buttons */
+  .fixed.inset-0.bg-black { display: none !important; }
+  .sticky.top-0 { position: static !important; }
+  .print-only { display: block !important; }
+  @page { margin: 1cm; size: A4; }
+  section, table { page-break-inside: avoid; }
+  a { text-decoration: underline; color: #3498db !important; }
+  img { max-width: 100%; height: auto; }
   button:has(svg.lucide-plus),
-  button:has(svg.lucide-minus) {
-    display: none !important;
-  }
-  
-  /* Hide "Column", "Row", "Image", "Reference", "Link" labels */
-  .flex.items-center.gap-2:has(button) span.text-sm.text-gray-700,
-  .flex.items-center.gap-2:has(button) span.text-gray-400 {
-    display: none !important;
-  }
-  
-  /* Hide separator pipes */
-  .flex.items-center.gap-4 span.text-gray-400 {
-    display: none !important;
-  }
-  
-  /* Hide "Remove Section", "Remove Chart", "Add Chart", "Add Section", "Add Pro Tip", "Remove" buttons */
-  button:has(.lucide-minus),
-  button:has(.lucide-plus) {
-    display: none !important;
-  }
-  
-  /* Hide entire control rows for tables */
-  .mb-2.flex.items-center.gap-4,
-  .mb-2.flex.items-center.gap-2 {
-    display: none !important;
-  }
-  
-  /* Hide pencil edit buttons on images */
-  button:has(.lucide-pencil) {
-    display: none !important;
-  }
-  
-  /* TASK 3: Hide all GripVertical drag handles */
-  .lucide-grip-vertical,
-  svg.lucide-grip-vertical {
-    display: none !important;
-  }
-  
-  /* TASK 4: Ensure alternating row colors in tables */
-  /* Force alternating row colors for print */
-  tbody tr:nth-child(odd) {
-    background-color: white !important;
-  }
-  
-  tbody tr:nth-child(even) {
-    background-color: #f9f9fb !important;
-  }
-  
-  /* Target the specific class that Tailwind generates */
-  tr[class*="bg-[#f9f9fb]"] {
-    background-color: #f9f9fb !important;
-  }
-  
-  /* TASK 5: Ensure Pro Tip containers have yellow background */
-  div[class*="bg-[#fef9e7]"],
-  div[class*="fef9e7"] {
-    background-color: #fef9e7 !important;
-    border-left-color: #f39c12 !important;
-  }
-  
-  /* TASK 6: Keep Content buttons blue (without drag handles) */
-  button[class*="bg-[#3498db]"],
-  button[class*="3498db"] {
-    background-color: #3498db !important;
-    color: white !important;
-  }
+  button:has(svg.lucide-minus) { display: none !important; }
+  .lucide-grip-vertical, svg.lucide-grip-vertical { display: none !important; }
+  tbody tr:nth-child(odd) { background-color: white !important; }
+  tbody tr:nth-child(even) { background-color: #f9f9fb !important; }
 }
 
-/* Hide print-only elements on screen */
 @media screen {
-  .print-only {
-    display: none !important;
-  }
+  .print-only { display: none !important; }
 }
